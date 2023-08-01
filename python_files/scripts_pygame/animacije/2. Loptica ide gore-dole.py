@@ -1,0 +1,26 @@
+import pygame as pg
+
+pg.init()
+
+WIDTH = 800
+HEIGHT = 600
+
+screen = pg.display.set_mode((WIDTH, HEIGHT))
+
+loptica_x = WIDTH // 2
+loptica_y = 0
+move = 5
+
+def draw():
+    global loptica_y, loptica_x, move
+    screen.fill((0, 0, 0))
+    pg.draw.circle(screen, (255, 255, 255), (loptica_x, loptica_y), 10)
+    loptica_y += move
+    if loptica_y > HEIGHT or loptica_y < 0:
+        move *= -1
+    pg.display.update()
+
+
+for i in range(1000):
+    draw()
+    pg.time.delay(50)
